@@ -1,0 +1,113 @@
+# Git Mentorship - Day 1 Summary
+
+Great work today! You went from initializing a repo to handling merge conflicts and collaborating on GitHub. Here is a detailed breakdown of everything we covered.
+
+## 🟢 Module 1: The Foundations
+
+### 1. Identify Yourself
+**Command:** `git config --global user.name "Your Name"`
+*   **What it does:** Sets the name that will be attached to every commit you make.
+*   **Why:** Git needs to know *who* to blame (or credit) for changes. It's like signing a legal contract.
+*   **Context:** Used once per computer (usually).
+
+### 2. Start a Repository
+**Command:** `git init`
+*   **What it does:** Turns the current folder into a Git repository. It creates a hidden `.git` folder.
+*   **Why:** Tells Git "Start watching this folder for changes."
+*   **Context:** Used once per project.
+
+### 3. The Core Loop (Save Cycle)
+This is 90% of your daily work.
+
+*   **`git status`**
+    *   **What:** Shows you what files are new, changed, or staged.
+    *   **Why:** You always want to know what Git *sees* before you save.
+    
+*   **`git add <filename>`**
+    *   **What:** Moves a file's changes to the "Staging Area".
+    *   **Why:** It's like putting items in a shopping cart. You might edit 10 files, but only want to "buy" (commit) 5 of them.
+    *   **Tip:** `git add .` stages *everything* in the folder.
+
+*   **`git commit -m "Message"`**
+    *   **What:** Takes a permanent snapshot of the Staging Area.
+    *   **Why:** This is the "Save" button. It creates a history point you can always go back to.
+    *   **Tip:** Always write a message that explains *why* you made the change.
+
+*   **`git log`**
+    *   **What:** Shows the history of all commits (Snapshots).
+    *   **Why:** To see the timeline of your project.
+    *   **Tip:** If you get stuck in the list (colon `:` at bottom), press `q` to quit.
+
+### 4. The Bouncer (.gitignore)
+*   **What:** A text file named [.gitignore](file:///c:/Users/shaik/Desktop/git%20practice/.gitignore) (no extension).
+*   **Why:** Tells Git to completely ignore specific files (like `desktop.ini`, temporary files, credentials).
+*   **Context:** You list file names or patterns here, and Git will pretend they don't exist.
+
+---
+
+## 🟡 Module 2: The Multiverse (Branching)
+
+### 5. Create & Switch Branches
+**Command:** `git branch <name>`
+*   **What:** Creates a new parallel timeline.
+*   **Why:** To work on a new feature safely without breaking the main code (`master`/`main`).
+
+**Command:** `git switch <name>`
+*   **What:** Jumps your workspace to that branch.
+*   **Why:** To toggle between different versions of your project.
+*   **Note:** Older tutorials use `git checkout`, but `switch` is safer.
+
+### 6. Merging
+**Command:** `git merge <name>`
+*   **What:** Brings changes from branch `<name>` *into* your current branch.
+*   **Why:** To combine your finished feature back into the main project.
+
+### 7. Merge Conflicts 💥
+*   **What:** Occurs when two branches change the **exact same line** of code differently.
+*   **The Fix:**
+    1.  Open the file.
+    2.  Find the markers (`<<<<<<<`, `=======`, `>>>>>>>`).
+    3.  Delete the markers and decide what the code *should* look like.
+    4.  Save, `add`, and `commit`.
+
+---
+
+## 🔵 Module 3: The Cloud (Remotes)
+
+### 8. Linking to GitHub
+**Command:** `git remote add origin <URL>`
+*   **What:** Saves a URL with a nickname (standard name is `origin`).
+*   **Why:** So you don't have to type the full HTTPS link every time.
+
+**Command:** `git push -u origin main`
+*   **What:** Uploads your commits to the server.
+*   **Why:** To backup your code and share it.
+*   **`-u`**: Stands for "Upstream". It links your local folder to the cloud folder permanently, so next time you can just type `git push`.
+
+### 9. Downloading Code
+**Command:** `git clone <URL>`
+*   **What:** Downloads an entire repository from the web to a new folder.
+*   **Why:** To get a copy of a project to start working on it (simulating a second computer/developer).
+
+**Command:** `git pull`
+*   **What:** Downloads changes from the cloud *and* merges them into your file.
+*   **Why:** To update your local code with what your teammates have done.
+
+---
+
+## 🟠 Module 4: Undoing (Time Travel)
+
+### 10. Undo Local Changes
+**Command:** `git restore <filename>`
+*   **What:** Discards uncommitted changes in a file.
+*   **Why:** "Oops, I deleted a file" or "I broke this file and want it back to how it was at the last commit."
+
+### 11. View the Past
+**Command:** `git checkout <Commit-Hash>`
+*   **What:** Teleports your workspace to a specific point in history (using the ID from `git log`).
+*   **Why:** To see exactly what the code looked like yesterday/last year.
+*   **Detached HEAD:** Means you are looking at a specific commit, not a moving branch. To leave, just `git switch main`.
+
+---
+
+**Next Session:** We will pick up with **Reverting** (Undoing shared mistakes safely) and **Advanced Topics**!
